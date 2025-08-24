@@ -3,23 +3,35 @@ name: Terraform Pipeline
 on:
   push:
     branches:
-      - main    # sirf main branch pe
+      - main
 
 jobs:
   terraform:
-    runs-on: ubuntu-latest   # yeh tumhara self-hosted runner hai
+    runs-on: ubuntu-latest   # tum apna myagentongit bhi use kar sakte ho
 
     steps:
-      
+      # Step 1: Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      # Step 2: Terraform init
+      # Step 2: Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5   # tumhe jo version chahiye wo de do
+
+      # Step 3: Terraform Init
       - name: Terraform Init
         run: terraform init
 
-      # Step 3: Terraform Validate
+      # Step 4: Terraform Validate
       - name: Terraform Validate
         run: terraform validate
 
-      # Step 4: Terraform Plan
+      # Step 5: Terraform Plan
       - name: Terraform Plan
         run: terraform plan -out=tfplan
+
+      # Step 6: Terraform Apply
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
