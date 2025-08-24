@@ -10,9 +10,7 @@ jobs:
     runs-on: myagentongit   # yeh tumhara self-hosted runner hai
 
     steps:
-      # Step 1: Code checkout
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      
 
       # Step 2: Terraform init
       - name: Terraform Init
