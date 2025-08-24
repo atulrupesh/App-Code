@@ -1,17 +1,27 @@
-name: Simple GitHub Action
+name: Terraform Pipeline
 
-on: 
-  push:          # Jab bhi push hoga
-    branches:    
-      - main     # sirf main branch pe
+on:
+  push:
+    branches:
+      - main    # sirf main branch pe
 
 jobs:
-  build:
-    runs-on: ubuntu-latest   # Ubuntu machine pe chalega
+  terraform:
+    runs-on: myagentongit   # yeh tumhara self-hosted runner hai
 
     steps:
-      - name: Checkout code
+      # Step 1: Code checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Run simple command
-        run: echo "Hello, GitHub Actions!"
+      # Step 2: Terraform init
+      - name: Terraform Init
+        run: terraform init
+
+      # Step 3: Terraform Validate
+      - name: Terraform Validate
+        run: terraform validate
+
+      # Step 4: Terraform Plan
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
