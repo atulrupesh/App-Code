@@ -1,0 +1,17 @@
+name: Simple GitHub Action
+
+on: 
+  push:          # Jab bhi push hoga
+    branches:    
+      - main     # sirf main branch pe
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Ubuntu machine pe chalega
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run simple command
+        run: echo "Hello, GitHub Actions!"
