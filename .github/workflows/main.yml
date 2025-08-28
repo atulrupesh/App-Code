@@ -1,12 +1,13 @@
 name: Hello Printer
 
 on:
-  push:            # jab bhi repo me push hoga
-  workflow_dispatch:  # manually bhi chala sakte ho
+  push:
+  workflow_dispatch:
 
 jobs:
   say-hello:
     runs-on: self-hosted
     steps:
       - name: Print message
-        run: echo "hello printer"
+        shell: cmd
+        run: echo hello printer
