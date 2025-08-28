@@ -1,13 +1,23 @@
-name: Hello Printer
+name: Deploy to Azure
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
-  say-hello:
+  deploy:
     runs-on: self-hosted
+
     steps:
-      - name: Print message
-        shell: cmd
-        run: echo hello printer
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+
+      - name: Run Azure CLI command
+        run: az group list
