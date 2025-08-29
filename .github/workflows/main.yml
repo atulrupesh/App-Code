@@ -20,7 +20,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.7.5   # jo version chahiye wo de sakte ho
+          terraform_version: letest
 
       - name: Terraform Init
         run: terraform init
