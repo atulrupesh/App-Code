@@ -13,12 +13,10 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+         clientId: c1e88437-228e-4781-8d87-91802824c7e2
+         tenantId: ebf03ffb-2313-48d8-80e9-670bbb83e7d9
+         subscriptionId: c751b003-03b2-41f7-8579-5c1a60f11ac2
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: letest
 
       - name: Terraform Init
         run: terraform init
