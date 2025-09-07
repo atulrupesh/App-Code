@@ -50,7 +50,7 @@ jobs:
 
       - name: Terraform Plan
         id: apply
-        run: terraform apply -no-color -input=false
+        run: terraform apply --auto-approve -no-color -input=false
         # working-directory: atulrupesh/App-Code
         continue-on-error: true
 
