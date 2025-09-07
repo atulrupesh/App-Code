@@ -21,3 +21,24 @@ jobs:
           client-id: f0e33685-7e86-4011-8138-07a15accfdd7
           tenant-id: ebf03ffb-2313-48d8-80e9-670bbb83e7d9
           subscription-id: c751b003-03b2-41f7-8579-5c1a60f11ac2
+          
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        working-directory: ./App-Code
+        continue-on-error: true
+
+        
+      - name: Terraform Init
+        working-directory: ./App-Code
+        id: init
+        run: terraform init -input=false
+
+        
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color -input=false
+        working-directory: ./App-Code
+        continue-on-error: true
+
+                
