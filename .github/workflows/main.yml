@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
@@ -22,12 +22,12 @@ jobs:
           tenant-id: ebf03ffb-2313-48d8-80e9-670bbb83e7d9
           subscription-id: c751b003-03b2-41f7-8579-5c1a60f11ac2
           
-      # - name: Install Terraform
+      - name: Install Terraform
 
-      #   uses: little-core-labs/install-terraform@v2.0.0
-      #   with:
+        uses: little-core-labs/install-terraform@v2.0.0
+        with:
           
-      #     version: 1.13.1
+          version: 1.13.1
           
       - name: Terraform fmt
         id: fmt
