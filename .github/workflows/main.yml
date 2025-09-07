@@ -48,7 +48,11 @@ jobs:
         # working-directory: atulrupesh/App-Code
         continue-on-error: true
 
-
+      - name: Terraform Plan
+        id: apply
+        run: terraform apply -no-color -input=false
+        # working-directory: atulrupesh/App-Code
+        continue-on-error: true
 
 
 
