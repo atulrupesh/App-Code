@@ -25,12 +25,12 @@ jobs:
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
-        working-directory: atulrupesh/App-Code
+        # working-directory: atulrupesh/App-Code
         continue-on-error: true
 
         
       - name: Terraform Init
-        working-directory: atulrupesh/App-Code
+        # working-directory: atulrupesh/App-Code
         id: init
         run: terraform init -input=false
 
@@ -38,7 +38,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color -input=false
-        working-directory: atulrupesh/App-Code
+        # working-directory: atulrupesh/App-Code
         continue-on-error: true
 
                 
