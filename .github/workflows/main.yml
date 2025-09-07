@@ -8,9 +8,8 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
+  terraform-plan:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -21,44 +20,46 @@ jobs:
           client-id: f0e33685-7e86-4011-8138-07a15accfdd7
           tenant-id: ebf03ffb-2313-48d8-80e9-670bbb83e7d9
           subscription-id: c751b003-03b2-41f7-8579-5c1a60f11ac2
-          
-      - name: Install Terraform
 
+      - name: Install Terraform
         uses: little-core-labs/install-terraform@v2.0.0
         with:
-          
-          version: 1.13.1
-          
+          version: 1.3.1
+
       - name: Terraform fmt
-        id: fmt
         run: terraform fmt -check
-        # working-directory: atulrupesh/App-Code
         continue-on-error: true
 
-        
       - name: Terraform Init
-        # working-directory: atulrupesh/App-Code
-        id: init
         run: terraform init -input=false
 
-        
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color -input=false
-        # working-directory: atulrupesh/App-Code
         continue-on-error: true
 
-      - name: Terraform Plan
+  terraform-apply:
+    runs-on: ubuntu-latest
+    needs: terraform-plan   # 👈 ye batata hai Apply stage sirf Plan ke baad chale
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v2.3.0
+        with:
+          client-id: f0e33685-7e86-4011-8138-07a15accfdd7
+          tenant-id: ebf03ffb-2313-48d8-80e9-670bbb83e7d9
+          subscription-id: c751b003-03b2-41f7-8579-5c1a60f11ac2
+
+      - name: Install Terraform
+        uses: little-core-labs/install-terraform@v2.0.0
+        with:
+          version: 1.3.1
+
+      - name: Terraform Init
+        run: terraform init -input=false
+
+      - name: Terraform Apply
         id: apply
         run: terraform apply --auto-approve -no-color -input=false
-        # working-directory: atulrupesh/App-Code
-        continue-on-error: true
-
-
-
-
-
-
-        
-
-                
