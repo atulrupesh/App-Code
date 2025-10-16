@@ -17,9 +17,9 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2.3.0
         with:
-          client-id: f0e33685-7e86-4011-8138-07a15accfdd7
-          tenant-id: ebf03ffb-2313-48d8-80e9-670bbb83e7d9
-          subscription-id: c751b003-03b2-41f7-8579-5c1a60f11ac2
+          client-id: 611a2000-d9df-41af-9c57-882edefadcc4
+          tenant-id: e4a6a357-5564-4e75-a12f-65b55d95db83
+          subscription-id: 1cdefba8-8b5b-44dd-8a6e-46f5b4005027
 
       - name: Install Terraform
         uses: little-core-labs/install-terraform@v2.0.0
@@ -48,9 +48,9 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2.3.0
         with:
-          client-id: f0e33685-7e86-4011-8138-07a15accfdd7
-          tenant-id: ebf03ffb-2313-48d8-80e9-670bbb83e7d9
-          subscription-id: c751b003-03b2-41f7-8579-5c1a60f11ac2
+          client-id: 611a2000-d9df-41af-9c57-882edefadcc4
+          tenant-id: e4a6a357-5564-4e75-a12f-65b55d95db83
+          subscription-id: 1cdefba8-8b5b-44dd-8a6e-46f5b4005027
 
       - name: Install Terraform
         uses: little-core-labs/install-terraform@v2.0.0
