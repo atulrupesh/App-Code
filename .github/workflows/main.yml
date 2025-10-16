@@ -17,7 +17,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2.3.0
         with:
-          client-id: "611a2000-d9df-41af-9c57-882edefadcc4"
+          client-id: "3beb2988-280b-40a3-8979-4b4b5bf6ed21"
           tenant-id: "e4a6a357-5564-4e75-a12f-65b55d95db83"
           subscription-id: "1cdefba8-8b5b-44dd-8a6e-46f5b4005027"
 
@@ -48,7 +48,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2.3.0
         with:
-          client-id: "611a2000-d9df-41af-9c57-882edefadcc4"
+          client-id: "3beb2988-280b-40a3-8979-4b4b5bf6ed21"
           tenant-id: "e4a6a357-5564-4e75-a12f-65b55d95db83"
           subscription-id: "1cdefba8-8b5b-44dd-8a6e-46f5b4005027"
 
